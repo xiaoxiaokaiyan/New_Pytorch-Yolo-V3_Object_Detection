@@ -58,14 +58,31 @@ You can change the resolutions of the input image by the `--reso` flag. The defa
 
 ### （3）On Video
 ```
-python video_demo.py --video video.avi
+python video_demo.py --video video.flv  #视频格式可以自己修改，如video.avi
 ```
 For this, you should run the file, video_demo.py with --video flag specifying the video file. The video file should be in .avi format since openCV only accepts OpenCV as the input format. The result is below.
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 100% height =100%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/video_result1.PNG" width = 100% height =100%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/video_result2.PNG" width = 100% height =100%  div align=left />
 
+### （4）Speeding up Video Inference
+```
+python video_demo_half.py --video video.flv  #视频格式可以自己修改，如video.avi
+```
+To speed video inference, you can try using the video_demo_half.py file instead which does all the inference with 16-bit half precision floats instead of 32-bit float. I haven't seen big improvements, but I attribute that to having an older card (Tesla K80, Kepler arch). If you have one of cards with fast float16 support, try it out, and if possible, benchmark it. 
 
+### （5）On a Camera
+```
+python cam_phone_demo.py  #调用手机摄像头，细节看 https://github.com/xiaoxiaokaiyan/New_Opencv_Phone_Object_Detection
+```
+```
+python cam_demo.py   #笔记本自带摄像头
+```
+Same as video module, but you don't have to specify the video file since feed will be taken from your camera. To be precise, feed will be taken from what the OpenCV, recognises as camera 0. The default image resolution is 160 here, though you can change it with `reso` flag.The result is below.
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/camera_phone_result1.PNG" width = 100% height =100%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/camera_phone_result2.PNG" width = 100% height =100%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/camera_result.PNG" width = 100% height =100%  div align=left />
 
-
+**You can easily tweak the code to use different weightsfiles, available at [yolo website]**(https://pjreddie.com/darknet/yolo/)
 
 
 
