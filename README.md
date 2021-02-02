@@ -100,7 +100,6 @@ YOLO v3 makes detections across different scales, each of which deputise in dete
 ## References:
 * [yolov3官网](https://pjreddie.com/darknet/yolo/)
 * [https://github.com/ayooshkathuria/pytorch-yolo-v3](https://github.com/ayooshkathuria/pytorch-yolo-v3)
-* [https://github.com/wmn7/ML_Practice/tree/master/2019_09_09](https://github.com/wmn7/ML_Practice/tree/master/2019_09_09)
 * [python+OpenCV+YOLOv3打开笔记本摄像头模型检测](https://blog.csdn.net/weixin_43590290/article/details/100736307)
 * [Windows+Cygwin+Darknet+OpenCV 简易上手实现YOLOv3目标检测](https://www.bilibili.com/video/BV1o54y1X7nk)
 
