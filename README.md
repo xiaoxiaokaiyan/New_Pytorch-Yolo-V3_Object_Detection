@@ -26,18 +26,6 @@
 <br/>
 
 
-## Visualization Results
-* CelebA数据集生成结果（3个多小时，20epoch）
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result2_fake_images-norm-20.png" width = 50% height =50%  div align=center />
-
-* Anime数据集生成结果（2个多小时，54epoch）
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result3_fake_images-norm-54.png" width = 50% height =50%  div align=center />
-
-* Oxford_102_flowers数据集生成结果（4个多小时，694epoch）
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result1_fake_images-norm-694.png" width = 50% height =50% div align=center />
-&nbsp;
-<br/>
-
 
 ## Public Zoo:
 * coco.names、yolov3.cfg、yolov3.weights。
@@ -49,8 +37,15 @@
 ## Detection Example
 ### （1）On single or multiple images 
 ```  
-
+  python detect.py --images imgs --det det 
 ```  
+`--images` flag defines the directory to load images from, or a single image file (it will figure it out), and `--det` is the directory
+to save images to. Other setting such as batch size (using `--bs` flag) , object threshold confidence can be tweaked with flags that can be looked up with. 
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result1.PNG" width = 50% height =50%  div align=center />
+
+
+
+
 
 
 
