@@ -35,6 +35,7 @@
 
 
 ## Detection Example
+
 ### （1）On single or multiple images 
 ```  
   python detect.py --images imgs --det det 
@@ -45,11 +46,21 @@ to save images to. Other setting such as batch size (using `--bs` flag) , object
 ``` 
   通过python detect.py -h，查看参数
 ``` 
+
+
 ### （2）Speed Accuracy Tradeoff
 ```
 python detect.py --images imgs --det det --reso 320
 ```
 You can change the resolutions of the input image by the `--reso` flag. The default value is 416. Whatever value you chose, rememeber **it should be a multiple of 32 and greater than 32**. Weird things will happen if you don't. You've been warned. The result is below.
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 100% height =100%  div align=left />
+
+
+### （3）On Video
+```
+python video_demo.py --video video.avi
+```
+For this, you should run the file, video_demo.py with --video flag specifying the video file. The video file should be in .avi format since openCV only accepts OpenCV as the input format. The result is below.
 <img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 100% height =100%  div align=left />
 
 
@@ -107,25 +118,6 @@ As of now, the code only contains the detection module, but you should expect th
 
 ## Detection Example
 
-![Detection Example](https://i.imgur.com/m2jwneng.png)
-## Running the detector
-
-### Speed Accuracy Tradeoff
-You can change the resolutions of the input image by the `--reso` flag. The default value is 416. Whatever value you chose, rememeber **it should be a multiple of 32 and greater than 32**. Weird things will happen if you don't. You've been warned. 
-
-```
-python detect.py --images imgs --det det --reso 320
-```
-
-### On Video
-For this, you should run the file, video_demo.py with --video flag specifying the video file. The video file should be in .avi format
-since openCV only accepts OpenCV as the input format. 
-
-```
-python video_demo.py --video video.avi
-```
-
-Tweakable settings can be seen with -h flag. 
 
 ### Speeding up Video Inference
 
