@@ -40,8 +40,17 @@
   python detect.py --images imgs --det det 
 ```  
 `--images` flag defines the directory to load images from, or a single image file (it will figure it out), and `--det` is the directory
-to save images to. Other setting such as batch size (using `--bs` flag) , object threshold confidence can be tweaked with flags that can be looked up with. 
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result1.PNG" width = 50% height =50%  div align=center />
+to save images to. Other setting such as batch size (using `--bs` flag) , object threshold confidence can be tweaked with flags that can be looked up with.The result is below.
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result1.PNG" width = 50% height =50%  div align=left />
+``` 
+  通过python detect.py -h，查看参数
+``` 
+### （2）Speed Accuracy Tradeoff
+```
+python detect.py --images imgs --det det --reso 320
+```
+You can change the resolutions of the input image by the `--reso` flag. The default value is 416. Whatever value you chose, rememeber **it should be a multiple of 32 and greater than 32**. Weird things will happen if you don't. You've been warned. The result is below.
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 50% height =50%  div align=left />
 
 
 
@@ -100,26 +109,6 @@ As of now, the code only contains the detection module, but you should expect th
 
 ![Detection Example](https://i.imgur.com/m2jwneng.png)
 ## Running the detector
-
-### On single or multiple images
-
-Clone, and `cd` into the repo directory. The first thing you need to do is to get the weights file
-This time around, for v3, authors has supplied a weightsfile only for COCO [here](https://pjreddie.com/media/files/yolov3.weights), and place 
-
-the weights file into your repo directory. Or, you could just type (if you're on Linux)
-
-```
-wget https://pjreddie.com/media/files/yolov3.weights 
-python detect.py --images imgs --det det 
-```
-
-
-`--images` flag defines the directory to load images from, or a single image file (it will figure it out), and `--det` is the directory
-to save images to. Other setting such as batch size (using `--bs` flag) , object threshold confidence can be tweaked with flags that can be looked up with. 
-
-```
-python detect.py -h
-```
 
 ### Speed Accuracy Tradeoff
 You can change the resolutions of the input image by the `--reso` flag. The default value is 416. Whatever value you chose, rememeber **it should be a multiple of 32 and greater than 32**. Weird things will happen if you don't. You've been warned. 
