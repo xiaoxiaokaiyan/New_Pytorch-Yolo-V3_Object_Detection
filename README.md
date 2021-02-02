@@ -1,3 +1,89 @@
+# 心得：**Yolov3 图片-视频-摄像头物体检测 **
+
+## News
+* this code 
+* [Opencv Version(延迟大)](https://github.com/xiaoxiaokaiyan/New_Opencv_Phone_Object_Detection)
+&nbsp;
+<br/>
+
+
+## Dependencies:
+* &gt; GeForce GTX 1660TI
+* Windows10
+* python==3.6.12
+* torch==1.0.0
+* GPU环境安装包，下载地址：https://pan.baidu.com/s/14Oisbo9cZpP7INQ6T-3vwA 提取码：z4pl （网上找的）
+```
+  Anaconda3-5.2.0-Windows-x86_64.exe
+  cuda_10.0.130_411.31_win10.exe
+  cudnn-10.0-windows10-x64-v7.4.2.24.zip
+  h5py-2.8.0rc1-cp36-cp36m-win_amd64.whl
+  numpy-1.16.4-cp36-cp36m-win_amd64.whl
+  tensorflow_gpu-1.13.1-cp36-cp36m-win_amd64.whl
+  torch-1.1.0-cp36-cp36m-win_amd64.whl
+  torchvision-0.3.0-cp36-cp36m-win_amd64.whl
+```
+<br/>
+
+
+## Visualization Results
+* CelebA数据集生成结果（3个多小时，20epoch）
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result2_fake_images-norm-20.png" width = 50% height =50%  div align=center />
+
+* Anime数据集生成结果（2个多小时，54epoch）
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result3_fake_images-norm-54.png" width = 50% height =50%  div align=center />
+
+* Oxford_102_flowers数据集生成结果（4个多小时，694epoch）
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch_WGAN_Celeba_Oxford102flowers_Anime/blob/main/result1_fake_images-norm-694.png" width = 50% height =50% div align=center />
+&nbsp;
+<br/>
+
+
+## Public Zoo:
+* coco.names、yolov3.cfg、yolov3.weights。
+  * YOLOv3模型文件 link:[链接：https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ 提取码：u41w](https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ)
+<br/>
+
+## Experience：
+### （1）代码问题  
+```  
+      出现：RuntimeError: invalid argument 0: Sizes of tensors must match except in dime
+      这种错误有两种可能：
+          1.你输入的图像数据的维度不完全是一样的，比如是训练的数据有100组，其中99组是256*256，但有一组是384*384，这样会导致Pytorch的检查程序报错。
+          2.比较隐晦的batchsize的问题，Pytorch中检查你训练维度正确是按照每个batchsize的维度来检查的，比如你有1000组数据（假设每组数据为三通道256px*256px的图像），batchsize为4，那么每次训练             则提取(4,3,256,256)维度的张量来训练，刚好250个epoch解决(250*4=1000)。但是如果你有999组数据，你继续使用batchsize为4的话，这样999和4并不能整除，你在训练前249组时的张量维度都为               (4,3,256,256)但是最后一个批次的维度为(3,3,256,256)，Pytorch检查到(4,3,256,256) != (3,3,256,256)，维度不匹配，自然就会报错了，这可以称为一个小bug。
+      解决办法：
+          对于第一种：整理一下你的数据集保证每个图像的维度和通道数都一直即可。（本文的解决方法）
+          对于第二种：挑选一个可以被数据集个数整除的batchsize或者直接把batchsize设置为1即可。
+
+```  
+
+
+
+## References:
+* [WGAN-GP训练流程---对本代码的详细讲解](https://mathpretty.com/11133.html)
+* [https://github.com/wmn7/ML_Practice/tree/master/2019_09_09](https://github.com/wmn7/ML_Practice/tree/master/2019_09_09)
+* [RuntimeError: invalid argument 0: Sizes of tensors must match except in dimension 0. Got 544 and 1935 in dimension 2 at ../aten/src/TH/generic/THTensor.cpp:711](https://www.cnblogs.com/zxj9487/p/11531888.html)
+* [PyTorch修炼二、带你详细了解并使用Dataset以及DataLoader](https://zhuanlan.zhihu.com/p/128679151)
+* [更多GAN变种的实现：https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Tensorflow-2](https://github.com/LynnHo/DCGAN-LSGAN-WGAN-GP-DRAGAN-Tensorflow-2)
+* [深度学习与TensorFlow 2入门实战（完整版）](https://www.bilibili.com/video/BV1HV411q7xD?from=search&seid=14089320887830328110)---龙曲良
+* [https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73) ---[Joseph Rocca](https://medium.com/@joseph.rocca)
+* [https://zhuanlan.zhihu.com/p/24767059](https://zhuanlan.zhihu.com/p/24767059)
+* [更多GAN变种的论文：https://github.com/hindupuravinash/the-gan-zoo](https://github.com/hindupuravinash/the-gan-zoo)
+* [https://reiinakano.github.io/gan-playground/在线构建GAN](https://reiinakano.github.io/gan-playground/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # A PyTorch implementation of a YOLO v3 Object Detector
 
 [UPDATE] : This repo serves as a driver code for my research. I just graduated college, and am very busy looking for research internship / fellowship roles before eventually applying for a masters. I won't have the time to look into issues for the time being. Thank you.
@@ -16,12 +102,7 @@ If you want to understand how to implement this detector by yourself from scratc
 
 As of now, the code only contains the detection module, but you should expect the training module soon. :) 
 
-## Requirements
-1. Python 3.5
-2. OpenCV
-3. PyTorch 0.4
 
-Using PyTorch 0.3 will break the detector.
 
 
 
