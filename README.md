@@ -41,19 +41,14 @@
 
 ## Public Zoo:
 * coco.names、yolov3.cfg、yolov3.weights。
-  * YOLOv3模型文件 link:[链接：https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ 提取码：u41w](https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ)
+  * YOLOv3模型文件 link1:[链接：https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ 提取码：u41w](https://pan.baidu.com/s/1M8EVfUZ7NCWV5yJMuK2LbQ)
+  * YOLOv3模型文件 link2:[https://pjreddie.com/darknet/yolo/]
 <br/>
 
-## Experience：
-### （1）代码问题  
+
+## Detection Example
+### （1）On single or multiple images 
 ```  
-      出现：RuntimeError: invalid argument 0: Sizes of tensors must match except in dime
-      这种错误有两种可能：
-          1.你输入的图像数据的维度不完全是一样的，比如是训练的数据有100组，其中99组是256*256，但有一组是384*384，这样会导致Pytorch的检查程序报错。
-          2.比较隐晦的batchsize的问题，Pytorch中检查你训练维度正确是按照每个batchsize的维度来检查的，比如你有1000组数据（假设每组数据为三通道256px*256px的图像），batchsize为4，那么每次训练             则提取(4,3,256,256)维度的张量来训练，刚好250个epoch解决(250*4=1000)。但是如果你有999组数据，你继续使用batchsize为4的话，这样999和4并不能整除，你在训练前249组时的张量维度都为               (4,3,256,256)但是最后一个批次的维度为(3,3,256,256)，Pytorch检查到(4,3,256,256) != (3,3,256,256)，维度不匹配，自然就会报错了，这可以称为一个小bug。
-      解决办法：
-          对于第一种：整理一下你的数据集保证每个图像的维度和通道数都一直即可。（本文的解决方法）
-          对于第二种：挑选一个可以被数据集个数整除的batchsize或者直接把batchsize设置为1即可。
 
 ```  
 
