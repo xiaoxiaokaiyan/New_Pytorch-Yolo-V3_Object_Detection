@@ -41,7 +41,7 @@
 ```  
 `--images` flag defines the directory to load images from, or a single image file (it will figure it out), and `--det` is the directory
 to save images to. Other setting such as batch size (using `--bs` flag) , object threshold confidence can be tweaked with flags that can be looked up with.The result is below.
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result1.PNG" width = 50% height =50%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result1.PNG" width = 100% height =100%  div align=left />
 ``` 
   通过python detect.py -h，查看参数
 ``` 
@@ -50,7 +50,7 @@ to save images to. Other setting such as batch size (using `--bs` flag) , object
 python detect.py --images imgs --det det --reso 320
 ```
 You can change the resolutions of the input image by the `--reso` flag. The default value is 416. Whatever value you chose, rememeber **it should be a multiple of 32 and greater than 32**. Weird things will happen if you don't. You've been warned. The result is below.
-<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 50% height =50%  div align=left />
+<img src="https://github.com/xiaoxiaokaiyan/New_Pytorch-Yolo-V3_Object_Detection/blob/master/results/image_result2.PNG" width = 100% height =100%  div align=left />
 
 
 
